@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -19,8 +20,7 @@ autoRoutes(path.join(__dirname, './protected/controllers'));
 app.use(require("./protected/middlewares/basic/404Middleware"));
 app.use(require("./protected/middlewares/basic/ErrorMiddleware"));
 
-app.listen(3000, function () {
-  console.log('App started on port 3000!');
+app.listen(process.env.PORT, function () {
+  console.log(`App started on port ${process.env.PORT}!`);
 });
-
 module.exports = app;
